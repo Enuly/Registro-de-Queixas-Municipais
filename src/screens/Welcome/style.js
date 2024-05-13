@@ -4,6 +4,7 @@ export const style = StyleSheet.create({
     container:{
         flex:1,
         alignItems:"center",
+        backgroundColor:"#09579E",
         justifyContent:"center"
     },
     containerImg:{
@@ -23,25 +24,28 @@ export const style = StyleSheet.create({
         fontSize:40
     },
     containerDescription:{
+        width:"100%",
         backgroundColor:"white",
         flex:1,
         padding:20,
         borderTopLeftRadius:20,
         borderTopRightRadius:20,
-        justifyContent:"space-between"
+        justifyContent:"space-around"
     },
     textdescrition:{
         color:"gray",
-        fontSize:18
+        fontSize:20
     },
 
     button:{
-        width:"70%",
-        height:70,
+        width:200,
+        height:50,
         backgroundColor:"#09579E",
         alignSelf:"center",
         padding:7,
+        display:"flex",
         justifyContent:"center",
-        alignItems:"center"
+        alignItems:"center",
+        borderRadius:15
     },
 }) 

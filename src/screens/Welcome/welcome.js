@@ -1,6 +1,5 @@
-import { View, Text, Image, Touchable } from "react-native";
+import { View, Text, Image, TouchableOpacity  } from "react-native";
 import { style } from "./style";
-import { TouchableOpacity } from "react-native-web";
 export default function Welcome() {
   return (
     <View style={style.container}>
@@ -16,8 +15,8 @@ export default function Welcome() {
           Olá! Aqui você pode informar as autoridades local sobre problemas
           ocorrentes na cidade.
         </Text>
-        <TouchableOpacity>
-            <Text style={style.button}>
+        <TouchableOpacity  style={style.button}>
+            <Text  style={{color:"white"}}>
                 Começar
             </Text>
         </TouchableOpacity>
