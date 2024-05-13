@@ -1,20 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
+import {  Text, View } from 'react-native';
+import Router from './src/routers/router';
+import { NavigationContainer } from '@react-navigation/native';
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Antonio é um totoso</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Router/>
+    </NavigationContainer>
+    
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'rgb(100,90,100)',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
