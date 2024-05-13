@@ -5,5 +5,5 @@ export default function Welcome(){
         <View style={style.container}>
             <Text>Essa é a tela de boas-vindas</Text>
         </View>
-    )
+    ) 
 }

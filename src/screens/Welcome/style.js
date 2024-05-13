@@ -6,4 +6,4 @@ export const style = StyleSheet.create({
         alignItems:"center",
         justifyContent:"center"
     }
-})
+}) 
