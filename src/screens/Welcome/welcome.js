@@ -3,7 +3,7 @@ import { style } from "./style"
 export default function Welcome(){
     return(
         <View style={style.container}>
-            <Text>Essa é a tela de boas-vindas</Text>
+            <Text>Tela de welcome</Text>
         </View>
     )
 }
