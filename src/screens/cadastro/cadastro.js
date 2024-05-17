@@ -2,7 +2,7 @@ import React from "react";
 import {style} from "./style";
 import { View, Image, Text, TextInput } from "react-native";
 import { useState } from "react";
-export default function cadastro(){
+export default function Cadastro(){
     
     const [nome, setNome] = useState("")
     const [CPF, setCPF] = useState("")
