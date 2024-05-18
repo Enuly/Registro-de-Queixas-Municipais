@@ -20,7 +20,11 @@ export default function Login() {
       if (response.findIt == true) {
         const { CPF } = response.data;
         await AsyncStorage.setItem("cpf", String(CPF));
-        navigation.navigate("profile");
+        navigation.reset({
+          index:0,
+          routes:[{name:"profile"}],
+          actions:[navigation.navigate("profile")]
+        })
       } else {
         setErro("Usuario não encontrado");
       }

@@ -4,38 +4,35 @@ import Login from "../screens/Login/login";
 import Cadastro from "../screens/Cadastro/cadastro";
 import Profile from "../screens/Profile/profile";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
 const Stack = createStackNavigator();
 
 export default function Router() {
+  const navigation = useNavigation()
+
+  //verifica se o usuario está logado
   const isLogged = async () => {
     const cpf = await AsyncStorage.getItem("cpf");
     if (!cpf || cpf == "") {
-      console.log(cpf)
-      return false;
+      //se não estiver renderiza a tela de welcome
+      navigation.reset({
+        index:0,
+        routes:[{name:"welcome"}],
+        actions:[navigation.navigate("welcome")]
+      })
     } else {
-      console.log(cpf)
-      return true;
+      //se estiver renderiza a tela de profile
+      navigation.reset({
+        index:0,
+        routes:[{name:"profile"}],
+        actions:[navigation.navigate("profile")]
+      })
     }
   };
 
   return (
     <Stack.Navigator>
-      {isLogged() == true ? (
-        <>
-          <Stack.Screen
-            name="profile"
-            component={Profile}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="welcome"
-            component={Welcome}
-            options={{ headerShown: false }}
-          />
-        </>
-      ) : (
-        <>
-          <Stack.Screen
+       <Stack.Screen
             name="welcome"
             component={Welcome}
             options={{ headerShown: false }}
@@ -45,12 +42,10 @@ export default function Router() {
             component={Profile}
             options={{ headerShown: false }}
           />
-        </>
-      )}
       <Stack.Screen
         name="login"
         component={Login}
-        options={{ headerShown: false }}
+        options={{ headerShown: false, headerLeft:null }}
       />
 
       <Stack.Screen
