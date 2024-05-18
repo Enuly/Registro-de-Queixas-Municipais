@@ -1,18 +1,51 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import Welcome from "../screens/Welcome/welcome";
 import Login from "../screens/Login/login";
-import Cadastro from "../screens/cadastro/cadastro";
+import Cadastro from "../screens/Cadastro/cadastro";
 import Profile from "../screens/Profile/profile";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useEffect } from "react";
 const Stack = createStackNavigator();
+
 export default function Router() {
+  const isLogged = async () => {
+    const cpf = await AsyncStorage.getItem("cpf");
+    if (!cpf || cpf == "") {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   return (
     <Stack.Navigator>
-      <Stack.Screen
-        name="welcome"
-        component={Welcome}
-        options={{ headerShown: false }}
-      />
-
+      {isLogged() == true ? (
+        <>
+          <Stack.Screen
+            name="profile"
+            component={Profile}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="welcome"
+            component={Welcome}
+            options={{ headerShown: false }}
+          />
+        </>
+      ) : (
+        <>
+          <Stack.Screen
+            name="welcome"
+            component={Welcome}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="profile"
+            component={Profile}
+            options={{ headerShown: false }}
+          />
+        </>
+      )}
       <Stack.Screen
         name="login"
         component={Login}
@@ -22,11 +55,6 @@ export default function Router() {
       <Stack.Screen
         name="cadastro"
         component={Cadastro}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="profile"
-        component={Profile}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

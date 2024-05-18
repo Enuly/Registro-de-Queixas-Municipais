@@ -15,7 +15,9 @@ export default function Login() {
       setErro("Preencha todos os campos");
     } else {
       const response = await login(email, senha);
+      console.log(response)
       if (response.findIt == true) {
+        
         const { CPF } = response.data;
         await AsyncStorage.setItem("cpf", String(CPF));
         navigation.navigate("profile");

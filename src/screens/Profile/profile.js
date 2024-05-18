@@ -1,5 +1,5 @@
 import react from "react";
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { style } from "./style";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
@@ -29,17 +29,20 @@ export default function Profile() {
   const searchUser = async (cpf) => {
     const response = await getDataProfile(cpf);
     if (response.findIt == true) {
-      const { CPF, Nome, Email, CEP, Endereco } = response.data;
+      const { CPF, nome, Email, CEP, Endereco } = response.data;
       setCep(CEP);
       setCpf(CPF);
-      setNome(Nome);
+      setNome(nome);
       setEmail(Email);
       setEndereco(Endereco);
     } else {
       setErro("Usuario não encontrado");
     }
   };
-
+  const quitAccount = async ()=>{
+    await AsyncStorage.removeItem("cpf")
+    navigation.navigate("welcome")
+  }
   return (
     <View style={style.container}>
       <Text style={{ color: "red" }}>{nome}</Text>
@@ -47,6 +50,11 @@ export default function Profile() {
       <Text style={{ color: "red" }}>{cpf}</Text>
       <Text style={{ color: "red" }}>{email}</Text>
       <Text style={{ color: "red" }}>{endereco}</Text>
+      <TouchableOpacity onPress={()=>{
+        quitAccount()
+      }}>
+        <Text>Sair</Text>
+      </TouchableOpacity>
     </View>
   );
 }
