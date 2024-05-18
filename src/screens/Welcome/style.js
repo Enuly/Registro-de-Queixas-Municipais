@@ -32,9 +32,13 @@ export const style = StyleSheet.create({
         borderTopRightRadius:20,
         justifyContent:"space-around"
     },
-    textdescrition:{
+    textdescrition1:{
+        color:"black",
+        fontSize:23,
+    },
+    textdescrition2:{
         color:"gray",
-        fontSize:20
+        fontSize:20,
     },
 
     button:{

@@ -16,6 +16,7 @@ export const style = StyleSheet.create({
   img: {
     width: "70%",
     resizeMode: "contain",
+    height:"60%"
   },
   containerLoginForm: {
     flex: 1,
@@ -26,12 +27,22 @@ export const style = StyleSheet.create({
     color: "white",
     fontSize: 30,
   },
+  boxErro:{
+    width:"70%",
+    height:40,
+    backgroundColor:"#a71a5b",
+    justifyContent:"center",
+    alignItems:"center",
+    borderRadius:10,
+    
+  },
   loginErro: {
-    color: "rgb(200,100,40)",
+    color: "#fff",
     fontSize: 20,
   },
   loginInput: {
     width: "80%",
+    fontSize:20,
     backgroundColor: "white",
     borderRadius: 10,
     color: "gray",

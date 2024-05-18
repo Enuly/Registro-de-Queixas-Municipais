@@ -12,6 +12,7 @@ export const login = async (email, senha) => {
     return { findIt: true, data: data.data.data };
   }
 };
+
 export const getDataProfile = async (cpf) => {
   const data = await api.post("/getData", { cpf });
   if (data.data.data == 0) {
@@ -20,3 +21,9 @@ export const getDataProfile = async (cpf) => {
     return { findIt: true, data: data.data.data };
   }
 };
+
+export const createNewUser = async (data) =>{
+  const {Email, Senha, nome, CEP, CPF, Endereco} = data
+  const response = await api.post("/createUser",{Email, Senha, Endereco, nome, CEP,CPF})
+  return response.data
+}

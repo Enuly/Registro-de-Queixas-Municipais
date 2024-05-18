@@ -45,6 +45,10 @@ export default function Profile() {
   }
   return (
     <View style={style.container}>
+      <View style={style.containerUser}></View>
+
+
+
       <Text style={{ color: "red" }}>{nome}</Text>
       <Text style={{ color: "red" }}>{cep}</Text>
       <Text style={{ color: "red" }}>{cpf}</Text>
@@ -55,6 +59,7 @@ export default function Profile() {
       }}>
         <Text>Sair</Text>
       </TouchableOpacity>
+      
     </View>
   );
 }

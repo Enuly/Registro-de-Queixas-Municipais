@@ -2,8 +2,20 @@ import { View, Text, Image, TouchableOpacity} from "react-native";
 import { style } from "./style";
 import * as Animatable from "react-native-animatable";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useEffect } from "react";
 export default function Welcome() {
   const navigation = useNavigation()
+  useEffect(()=>{
+    isLogged()
+  })
+  const isLogged = async () => {
+    const cpf = await AsyncStorage.getItem("cpf");
+    if (!cpf || cpf == "") {
+      console.log(cpf)
+    } else{navigation.navigate("profile")
+    }
+  };
   return (
     <View style={style.container}>
 
@@ -19,11 +31,16 @@ export default function Welcome() {
       </View>
 
       <Animatable.View animation="fadeInUp" delay={600} style={style.containerDescription}>
-
-        <Text style={style.textdescrition}>
+      <View>
+      <Text style={style.textdescrition1}>
           Olá! Aqui você pode informar as autoridades local sobre problemas
           ocorrentes na cidade.
         </Text>
+        <Text style={style.textdescrition2}>
+          Aperte em começar!
+        </Text>
+      </View>
+        
 
         <TouchableOpacity onPress={()=>{navigation.navigate("login")}} style={style.button}>
             <Text  style={{color:"white"}}>

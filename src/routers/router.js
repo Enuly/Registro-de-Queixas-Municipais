@@ -4,15 +4,16 @@ import Login from "../screens/Login/login";
 import Cadastro from "../screens/Cadastro/cadastro";
 import Profile from "../screens/Profile/profile";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useEffect } from "react";
 const Stack = createStackNavigator();
 
 export default function Router() {
   const isLogged = async () => {
     const cpf = await AsyncStorage.getItem("cpf");
     if (!cpf || cpf == "") {
+      console.log(cpf)
       return false;
     } else {
+      console.log(cpf)
       return true;
     }
   };
