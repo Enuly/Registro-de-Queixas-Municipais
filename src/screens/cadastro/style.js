@@ -53,5 +53,11 @@ export const style = StyleSheet.create({
         borderRadius: 15,
         margin: 25,
         marginBottom: 15,
-      }
+      },
+      loginErro: {
+        color: "#fff",
+        fontSize: 20,
+        marginBottom:10,
+        marginTop:10
+      },
 })

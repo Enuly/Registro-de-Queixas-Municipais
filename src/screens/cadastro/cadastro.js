@@ -15,6 +15,7 @@ export default function Cadastro() {
   const [Senha, setSenha] = useState("");
   const [Endereco, setEndereco] = useState("");
   const [fillFirstField, setFillFirstField] = useState(false);
+  const [erro, setError] = useState("")
 
   /*Essa é função que ira enviar os dados para a função createNewUser do arquivo connectApiBack.Js, que por sua vez
   faz conecção com o back-end, assim enviando as informações para o banco de dados
@@ -22,7 +23,20 @@ export default function Cadastro() {
   const createUser = async (Email, Endereco, CEP, CPF, nome, Senha)=>{
     data = {Email, Endereco, CEP, CPF, nome, Senha}
     const response = await createNewUser(data)
-    if(response.created == true){
+
+    if(response.cpfIsLogged || response.emailIsLogged){
+      if(response.emailIsLogged && response.cpfIsLogged){
+        setError("Cpf e Email já cadastrados")
+        setFillFirstField(false)
+      }else if(response.cpfIsLogged){
+        setError("Cpf Cadastrado")
+        setFillFirstField(false)
+      }else if(response.emailIsLogged){
+        setError("Email Cadastrado")
+        setFillFirstField(false)
+      }
+      
+    }else if(response.created == true){
         await AsyncStorage.setItem("cpf", String(CPF))
         navigation.navigate("profile")
 
@@ -39,6 +53,7 @@ export default function Cadastro() {
 
       <View style={style.containerCadastroForm}>
         <Text style={style.cadatroTitle}>CADASTRO</Text>
+        <Text style={style.loginErro}>{erro}</Text>
         <View style={fillFirstField == false ? {display:"flex", width:"100%", alignItems:"center"} : {display:"none"}}>
         <TextInput
             style={style.cadastroInput}
