@@ -6,9 +6,11 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect } from "react";
 export default function Welcome() {
   const navigation = useNavigation()
+  //useEffect é a primeira função a rodar;
   useEffect(()=>{
     isLogged()
   })
+  //verifica se há o item cpf salvo no dispositivo, caso haja, redireciona o usuário para tela de login
   const isLogged = async () => {
     const cpf = await AsyncStorage.getItem("cpf");
     if (!cpf || cpf == "") {

@@ -1,3 +1,4 @@
+//Tela de cadastro
 import React from "react";
 import { style } from "./style";
 import { View, Image, Text, TextInput, TouchableOpacity } from "react-native";
@@ -14,6 +15,10 @@ export default function Cadastro() {
   const [Senha, setSenha] = useState("");
   const [Endereco, setEndereco] = useState("");
   const [fillFirstField, setFillFirstField] = useState(false);
+
+  /*Essa é função que ira enviar os dados para a função createNewUser do arquivo connectApiBack.Js, que por sua vez
+  faz conecção com o back-end, assim enviando as informações para o banco de dados
+  */
   const createUser = async (Email, Endereco, CEP, CPF, nome, Senha)=>{
     data = {Email, Endereco, CEP, CPF, nome, Senha}
     const response = await createNewUser(data)

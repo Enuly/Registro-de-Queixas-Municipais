@@ -39,7 +39,7 @@ export default function Profile() {
   );
 
 
-
+//Proucura se há o cpf do usuário salvo no dispositivo, caso não encontre redireciona o usuário para a tela de welcome
   const getUser = async () => {
     const data = await AsyncStorage.getItem("cpf");
     if (!data) {
@@ -48,7 +48,7 @@ export default function Profile() {
       searchUser(data);
     }
   };
-
+  //Função semelhante a função de login, pois proucura os dados do usuário com base no cpf encontrado no dispositivo
   const searchUser = async (cpf) => {
     const response = await getDataProfile(cpf);
     if (response.findIt == true) {
@@ -62,6 +62,7 @@ export default function Profile() {
       setErro("Usuario não encontrado");
     }
   };
+  //Elimina o cpf salvo no dispositivo e redireciona o usuario para tela de login
   const quitAccount = async ()=>{
     console.log()
     await AsyncStorage.removeItem("cpf")

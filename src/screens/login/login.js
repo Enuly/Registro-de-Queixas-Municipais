@@ -11,6 +11,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [erro, setErro] = useState("");
+  //Função responsavel por proucurar as informações do usuário no banco de dados, caso o usuario exista
   const searchUser = async (email, senha) => {
     if (email == "" || senha == "") {
       setErro("Preencha todos os campos");
