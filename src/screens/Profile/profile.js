@@ -65,6 +65,11 @@ export default function Profile() {
   const quitAccount = async ()=>{
     console.log()
     await AsyncStorage.removeItem("cpf")
+    setCep("");
+    setCpf("");
+    setNome("");
+    setEmail("");
+    setEndereco("");
     navigation.navigate("welcome")
   }
   return (
