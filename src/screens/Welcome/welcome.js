@@ -4,11 +4,13 @@ import * as Animatable from "react-native-animatable";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect } from "react";
+import { quitApp } from "../../services/commonFunctions";
 export default function Welcome() {
   const navigation = useNavigation()
   //useEffect é a primeira função a rodar;
   useEffect(()=>{
     isLogged()
+    quitApp()
   })
   //verifica se há o item cpf salvo no dispositivo, caso haja, redireciona o usuário para tela de login
   const isLogged = async () => {

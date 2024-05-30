@@ -61,6 +61,14 @@ export const style = StyleSheet.create({
     marginBottom: 15,
   },
 
+  input: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    padding: 10,
+    marginBottom: 10,
+    borderRadius: 5,
+  },
+
   cadastroText: {
     color: "#ABDCFF",
   },

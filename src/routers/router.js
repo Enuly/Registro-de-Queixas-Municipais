@@ -5,6 +5,8 @@ import Cadastro from "../screens/Cadastro/cadastro";
 import Profile from "../screens/Profile/profile";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
+import RegistrarDenuncia from "../screens/RegistrarDenuncia/RegistrarDenuncia";
+import { Loading } from "../screens/Loading/Loading";
 const Stack = createStackNavigator();
 
 export default function Router() {
@@ -51,6 +53,16 @@ export default function Router() {
       <Stack.Screen
         name="cadastro"
         component={Cadastro}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="regisDenuncia"
+        component={RegistrarDenuncia}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="loading"
+        component={Loading}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
